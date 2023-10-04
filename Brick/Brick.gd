@@ -3,12 +3,15 @@ extends StaticBody2D
 var score = 0
 var new_position = Vector2.ZERO
 var dying = false
-
+var tween
 var powerup_prob = 0.1
 
 func _ready():
 	randomize()
-	position = new_position
+	position.x = new_position.x
+	position.y = -100
+	tween = create_tween()
+	tween.tween_property(self, "position", new_position, 0.5 + randf()*2).set_trans(Tween.TRANS_BOUNCE)
 	if score >= 100:
 		$ColorRect.color = Color8(224,49,49,255)
 	elif score >= 90:

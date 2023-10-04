@@ -9,6 +9,13 @@ visible = false
 offset_right = 10.0
 offset_bottom = 10.0
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 19.53, 1)
+position = Vector2(11, 7)
+scale = Vector2(1.16667, 1.16667)
+texture = ExtResource("1_lffek")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(12, 7)
+modulate = Color(0, 0, 0, 1)
+position = Vector2(11, 7)
 texture = ExtResource("1_lffek")
