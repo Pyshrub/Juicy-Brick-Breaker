@@ -8,7 +8,7 @@ var decay = 0.04
 var released = true
 
 var initial_velocity = Vector2.ZERO
-
+var h_rotate = 0.0
 func _ready():
 	contact_monitor = true
 	max_contacts_reported = 8
@@ -61,3 +61,12 @@ func change_speed(s):
 
 func die():
 	queue_free()
+func comet():
+	h_rotate = wrapf(h_rotate+0.01, 0, 1)
+	var comet_container = get_node_or_null("/root/Game/Comet_Container")
+	if comet_container != null:
+		var sprite = $Ball/ball_tennis1.duplicate()
+		sprite.global_position = global_position
+		sprite.modulate.s = 0.6
+		sprite.modulate.h = h_rotate
+		comet_container.add_child(sprite)

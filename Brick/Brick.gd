@@ -13,19 +13,21 @@ func _ready():
 	tween = create_tween()
 	tween.tween_property(self, "position", new_position, 0.5 + randf()*2).set_trans(Tween.TRANS_BOUNCE)
 	if score >= 100:
-		$ColorRect.color = Color8(224,49,49,255)
+		$ColorRect.color = Color.hex(0xcc00ffff)
 	elif score >= 90:
-		$ColorRect.color = Color8(253,126,20,255)
+		$ColorRect.color = Color.hex(0xFF00FFFF)
 	elif score >= 80:
-		$ColorRect.color = Color8(255, 212,	59,	69)
+		$ColorRect.color = Color.hex(0xFF0000ff)
 	elif score >= 70:
-		$ColorRect.color = Color8(148, 216,45, 53)
+		$ColorRect.color = Color.hex(0xFF6600ff)
 	elif score >= 60:
-		$ColorRect.color = Color8(34, 139, 230, 53)
+		$ColorRect.color = Color.hex(0xFFFF00ff)
 	elif score >= 50:
-		$ColorRect.color = Color8(132,94,247,62)
+		$ColorRect.color = Color.hex(0xE6FB04ff)
 	elif score >= 50:
-		$ColorRect.color = Color8(190,75,219,63)
+		$ColorRect.color = Color.hex(0x00FF00ff)
+	else:
+		$ColorRect.color = Color.hex(0x00FF66ff)
 
 func _physics_process(_delta):
 	if dying:
@@ -33,6 +35,9 @@ func _physics_process(_delta):
 
 func hit(_ball):
 	die()
+	var Brick_sound = get_node_or_null("/root/Game/Brick_Sound")
+	if Brick_sound != null:
+		Brick_sound.play()
 
 func die():
 	dying = true

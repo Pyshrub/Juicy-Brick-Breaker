@@ -2,28 +2,30 @@
 
 [ext_resource type="Script" path="res://Brick/Brick.gd" id="1"]
 
-[sub_resource type="Environment" id="Environment_250fa"]
-glow_enabled = true
-glow_bloom = 1.0
-glow_hdr_threshold = 0.6
-
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(90, 30)
 
+[sub_resource type="Environment" id="Environment_250fa"]
+glow_enabled = true
+glow_intensity = 2.57
+glow_bloom = 1.0
+glow_hdr_threshold = 0.6
+
 [node name="Brick" type="StaticBody2D"]
 script = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -45.0
 offset_top = -15.0
 offset_right = 45.0
 offset_bottom = 15.0
+color = Color(0.8, 0, 1, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="ColorRect"]
 environment = SubResource("Environment_250fa")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("1")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 offset_left = -40.0
