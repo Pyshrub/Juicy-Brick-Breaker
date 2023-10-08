@@ -1,13 +1,13 @@
 # Project Name
 
-Context and date
+9/29/2023
 
-Description
+A simple modified brick breaker
 
 
 ## Implementation
 
-Which features you included
+juice
 
 
 ## References
@@ -17,3 +17,4 @@ Which features you included
 
 
 ## Created by
+Camden Phipps
