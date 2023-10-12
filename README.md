@@ -18,10 +18,10 @@ A simple modified brick breaker
 10. Aesthetically Pleasing
 
 ## References
-
+Jason Francis for Base Code
 
 ## Future Development
-
+None Planned
 
 ## Created by
 Camden Phipps
