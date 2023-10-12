@@ -6,7 +6,7 @@ var speed_multiplier = 1.0
 var accelerate = false
 var decay = 0.04
 var released = true
-
+var distort_effect = 0.0002
 var initial_velocity = Vector2.ZERO
 var h_rotate = 0.0
 func _ready():
@@ -22,7 +22,7 @@ func _ready():
 
 func _on_Ball_body_entered(body):
 	if body.has_method("hit"):
-		$Highlight.modulate.a = 1.0
+		$Images/Highlight.modulate.a = 1.0
 		body.hit(self)
 		accelerate = true	
 
@@ -32,8 +32,8 @@ func _input(event):
 		released = true
 
 func _integrate_forces(state):
-	if $Highlight.modulate.a > 0:
-		$Highlight.modulate.a -= decay
+	if $Images/Highlight.modulate.a > 0:
+		$Images/Highlight.modulate.a -= decay
 	if not released:
 		var paddle = get_node_or_null("/root/Game/Paddle_Container/Paddle")
 		if paddle != null:
@@ -52,12 +52,15 @@ func _integrate_forces(state):
 	if state.linear_velocity.length() > max_speed * speed_multiplier:
 		state.linear_velocity = state.linear_velocity.normalized() * max_speed * speed_multiplier
 
-func change_size(s):
-	$ColorRect.scale = s
-	$CollisionShape2D.scale = s
+
 
 func change_speed(s):
 	speed_multiplier = s
+	
+func distort():
+	var direction = Vector2(1 + linear_velocity.length() * distort_effect, 1 - linear_velocity.length() * distort_effect)
+	$Images.rotation = linear_velocity.angle()
+	$Images.scale = direction
 
 func die():
 	queue_free()
@@ -65,7 +68,7 @@ func comet():
 	h_rotate = wrapf(h_rotate+0.01, 0, 1)
 	var comet_container = get_node_or_null("/root/Game/Comet_Container")
 	if comet_container != null:
-		var sprite = $Ball/ball_tennis1.duplicate()
+		var sprite = $Images/Sprite.duplicate()
 		sprite.global_position = global_position
 		sprite.modulate.s = 0.6
 		sprite.modulate.h = h_rotate

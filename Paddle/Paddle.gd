@@ -27,7 +27,7 @@ func _input(event):
 func hit(_ball):
 	$Highlight.modulate.a = 1.0
 	$Confetti.emitting = true
-	var Paddle_sound = get_node_or_null("/root/Game/Ball_Sound")
+	var Paddle_sound = get_node_or_null("/root/Game/Paddle_Sound")
 	if Paddle_sound != null:
 		Paddle_sound.play()
 

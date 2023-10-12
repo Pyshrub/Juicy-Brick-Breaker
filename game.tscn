@@ -125,7 +125,7 @@ stream = ExtResource("12_6xo2c")
 [node name="Brick_Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_erq58")
 
-[node name="Paddle Sound" type="AudioStreamPlayer" parent="."]
+[node name="Paddle_Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_arpa5")
 
 [connection signal="timeout" from="Fever/Timer" to="Fever" method="_on_Timer_timeout"]
